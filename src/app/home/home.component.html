@@ -1,0 +1,33 @@
+<!-- <h1 highlight bg-color='blue'>Home</h1>
+<span>{{dateNow | date: 'short' | uppercase }}</span> -->
+<h1 class="display-4">Nos biens immobiliers</h1>
+<!-- <app-button color="info" margin="ml-3" typedubouton="button" value="Custom button"></app-button> -->
+
+<div class="row mt-5">
+  <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let property of properties; let i = index"  >
+    <div class="card h-100" style="width: 18rem;">
+      <div *ngFor="let photo of property.photos; let first = first" >
+        <img *ngIf="first" [src]="photo" class="card-img-top img-fluid" [alt]="photo.name" [ngStyle]="{'min-height': '220px'}">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{property.title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{property.category}}</h6>
+        <p class="card-text">
+          {{property.category}}
+              <span *ngIf="property.surface && property.surface !== ''"  > de {{property.surface}} m²</span>
+              <span *ngIf="property.rooms && property.rooms !== ''"  >, {{property.rooms}} pièce(s)</span>.
+        </p>
+        <p>
+          Prix: {{ property.price}} €
+        </p>
+        <p [ngStyle]="{'color': getSoldValue(i)}">
+          <span *ngIf="!property.sold">A vendre</span>
+          <span *ngIf="property.sold">Vendu !</span>
+        </p>
+        <div class="text-center">
+          <button class="btn-sm btn-primary" type="button" [routerLink]="['/property', i]">Voir le bien</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

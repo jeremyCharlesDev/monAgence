@@ -1,0 +1,9 @@
+.delete-photo {
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.delete-photo i {
+  font-size: 20px;
+}
